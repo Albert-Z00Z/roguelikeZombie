@@ -1,4 +1,5 @@
 (function setup(window) {
+  //ayadimos funciones para manejar eventos y remover elementos
     var document = window.document;
     Object.prototype.on = function(a, b) {
       this.addEventListener(a, b);
@@ -15,10 +16,12 @@
           a.push(this[i]);
       return a;
     };
+//configuramos el canvas en 2d
     window.can = document.querySelector("canvas");
     window.ctx = window.can.getContext("2d");
     window.can.width = window.innerWidth;
     window.can.height = window.innerHeight;
+//funcion para generar numeros aleatorios enteros y flotantes
     window.randInt = function(a, b) {
       if (a === void 0) return Math.round(Math.random());
       else if (b === void 0) return Math.floor(Math.random() * a);
@@ -34,7 +37,8 @@
 * a.length)] : window.randInt(a, b);
     };
   }(window));
-  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+//funcion de la logica y dubujo del juego
   (function play(gameover) {
     can.style.cursor = "none";
     var mouse = {
@@ -69,6 +73,8 @@
         "Ring of Fire"
       ],
       weapon: "Revolver",
+
+//funcion para darle especificaciones a cada arma
       applyWeaponProperties: function() {
         switch(this.weapon) {
           case "Revolver":
@@ -184,6 +190,7 @@
       lives: 3,
       zombiesKilled: 0,
       bullets: [],
+//funcion de disparo de las armas
       fireRound: function(n) {
         if (n === void 0) n = 0;
         let a = Math.atan2(mouse.y - this.y, mouse.x - this.x);
@@ -204,6 +211,7 @@ Math.sin(a) * 2 * this.s,
         } else this.speak = false;
       }
     };
+//funcion para crear nuevos zombies
     player.applyWeaponProperties();
     var zombies = [];
     var Zombie = function() {
@@ -261,6 +269,7 @@ rand(-s * rand(2, 10), can.height + s * rand(2, 10));
     for (let i = 0; i < 100; i++)
       grass.push(new Grass());
     var frames = 0;
+//funcion para ir actualizando el juego
     (function update() {
       ctx.beginPath();
       ctx.clearRect(0, 0, can.width, can.height);
@@ -524,14 +533,15 @@ player.spray + "/" + player.magSize /
       frames++;
       requestAnimationFrame(update);
     }());
-    can.on("mousedown", function() {
+//manejo de los eventos
+    can.on("mousedown", function() { //maneja los eventos del click del raton
       switch(player.weapon) {
         case "Machine Gun":
         case "Minigun":
         case "Laser Gun":
         player.fire = true;   
       }
-    }).on("mouseup", function() {
+    }).on("mouseup", function() { //maneka los evwentos de liberacion del raton
       switch(player.weapon) {
         case "Revolver":
         case "Sniper Rifle":
@@ -555,6 +565,7 @@ player.spray + "/" + player.magSize /
       mouse.x = e.offsetX;
       mouse.y = e.offsetY;
     });
+//maneja la redimension de la ventana
     var move = function(e) {
       if (gameover)
         switch(e.which || e.keyCode) {
@@ -581,6 +592,18 @@ player.spray + "/" + player.magSize /
             player.my = 1;
         }
     };
+
+    can.on("contextmenu", function(e) {
+      e.preventDefault(); // Previene el menú contextual
+      player.showGun = false; // Oculta el arma durante la recarga
+      setTimeout(function() {
+        player.showGun = true; // Muestra el arma después de recargar
+        player.bullets = []; // Vacía el cargador
+        player.out = false; // Indica que la recarga ha terminado
+      }, player.reloadTime); // Tiempo de recarga según el arma
+    });
+    
+//maneja ñla liberacion de teclas
     window.on("resize", function() {
       can.width = this.innerWidth;
       can.height = this.innerHeight;
