@@ -22,18 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
       setTimeout(function() {
         intro3.style.display = 'none';
         menu.style.display = 'block';
-      }, 5000); // 5000 milisegundos = 5 segundos para la tercera intro
-    }, 5000); // 5000 milisegundos = 5 segundos para la segunda intro
-  }, 5000); // 5000 milisegundos = 5 segundos para la primera intro
+      }, 5000); // 5000 milisegundos = 5 segundos p
+    }, 5000); 
+  }, 5000); 
 
-  // Manejar el clic en el botón "Jugar"
   var jugarBtn = document.getElementById('jugarBtn');
   jugarBtn.addEventListener('click', function() {
-    // Aquí puedes colocar el código que deseas ejecutar al presionar el botón "Jugar"
-    // Por ejemplo, mostrar el contenido principal de la página
     menu.style.display = 'none'; // Ocultar el menú
     mainContent.style.display = 'block'; // Mostrar el contenido principal
-    // Coloca aquí el código adicional que desees ejecutar al presionar el botón "Jugar"
+    // Caquí el código adicional a ejecutar al presionar el botón "Jugar"
     (function setup(window) {
       //ayadimos funciones para manejar eventos y remover elementos
         var document = window.document;
@@ -243,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function() {
               });
             if (this.showGun && this.bullets.length % this.magSize === 0) {
               this.out = true;
-              this.say("Reload!");
+              this.say("Recarga!");
             } else this.speak = false;
           }
         };
@@ -359,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 player.zombiesKilled++;
                 if (zombies.length == player.hardcoreMode &&
      player.showMode) {
-                  player.say("Hardcore Mode Entered!");
+                  player.say("Entraste en modo Hardcore!");
                   player.mark = frames;
                   player.showMode = false;
                 }
@@ -388,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     player.out = false;
                     player.bullets = [];
                   });
-                  player.say("You found a " + player.weapon.
+                  player.say("Encontarste " + player.weapon.
     toLowerCase() + "!");
                 }
               }
@@ -524,6 +521,7 @@ document.addEventListener("DOMContentLoaded", function() {
               } else zombies[i] = new Zombie();
             }
           }
+// PERDER EL JUEGO
           if (gameover) {
             can.style.cursor = "default";
             ctx.beginPath();
@@ -534,12 +532,12 @@ document.addEventListener("DOMContentLoaded", function() {
             ctx.font = "100px creepster";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText("YOU DIED! " + (player.zombiesKilled < 1 ? "No" :
+            ctx.fillText("MORSITE! " + (player.zombiesKilled < 1 ? "No" :
      player.zombiesKilled.toLocaleString()) + " Zombie" +
      (player.zombiesKilled == 1 ? "" : "s") + 
-    " Killed", can.width / 2, can.height / 2);
+    " ASESINADOS", can.width / 2, can.height / 2);
             ctx.font = "50px creepster";
-            ctx.fillText("PRESS ENTER TO RESTART", can.width / 
+            ctx.fillText("PRESIONA ENTER PARA REINICIAR", can.width / 
     2, 0.75 * can.height);
           } else {
             for (let i = 0; i < player.lives; i++) {
