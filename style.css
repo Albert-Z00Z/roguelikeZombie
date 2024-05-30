@@ -3,15 +3,7 @@
 html, body {
   margin: auto;
   overflow: hidden;
-  background-color: #437543;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url('img/menu.png'); 
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80em;
+  background-color: #fff;
 }
 canvas {
   background: radial-gradient(rgb(150, 200, 150), rgb(50, 100, 50));
@@ -36,7 +28,8 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+  background-color: #437543;
+  width: 2200px;
 }
 
 button {
@@ -52,9 +45,6 @@ button {
   display: block;
 }
 
-#menu .button {
-  margin: auto;
-}
 
 
 
