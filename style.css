@@ -1,9 +1,63 @@
 @import url("https://fonts.googleapis.com/css?family=Creepster");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 html, body {
-  margin: 0;
+  margin: auto;
   overflow: hidden;
+  background-color: #437543;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('img/menu.png'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80em;
 }
 canvas {
   background: radial-gradient(rgb(150, 200, 150), rgb(50, 100, 50));
 }
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  background-color: #ffffff;
+}
+
+.intro img {
+  max-width: 1300px; 
+  display: block; 
+  margin: auto; 
+}
+
+#menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+button {
+  padding: 30px 60px;
+  font-size: 2em;
+  background-color: #ff7f50; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+  margin: auto; /* Centra horizontalmente el botón */
+  display: block;
+}
+
+#menu .button {
+  margin: auto;
+}
+
+
+
+
+
+
